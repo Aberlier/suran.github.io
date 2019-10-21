@@ -20,15 +20,22 @@
   </entry>
   <entry>
     <title>由于一个“ 引发的事故</title>
-    <url>/2019/10/19/error001/</url>
+    <url>/2019/10/20/error001/</url>
     <content><![CDATA[<p>前阵子在写程序的时候出现了这么一个错误：<br>org.apache.jasper.JasperException: /WEB-INF/pages/accessory/accessoryHome.jsp(1,61) quote symbol expected</p>
 <p>错误代码如下：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;c:when <span class="built_in">test</span>=<span class="variable">$&#123;page.page==1 &#125;</span>&gt;</span><br><span class="line">          &lt;li class=<span class="string">"active"</span>&gt;&lt;a href=<span class="string">"javascript:void();"</span> title=<span class="string">"首页"</span>&gt;首页&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;/c:when&gt;</span><br></pre></td></tr></table></figure>
 <p>quote symbol expected：quote symbol就是引号,expected就是期待连起来就是我代码少写引号了；</p>
 <p>正确代码如下：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;c:when <span class="built_in">test</span>=<span class="variable">$&#123;"page.page==1" &#125;</span>&gt;</span><br><span class="line">   &lt;li class=<span class="string">"active"</span>&gt;&lt;a href=<span class="string">"javascript:void();"</span> title=<span class="string">"首页"</span>&gt;首页&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;/c:when&gt;</span><br></pre></td></tr></table></figure>
-<pre><code class="bash"></code></pre>
-]]></content>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>错误集锦</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Exception</tag>
+        <tag>Spring</tag>
+      </tags>
   </entry>
   <entry>
     <title>张某人技术交流站</title>
