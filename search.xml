@@ -6,9 +6,9 @@
     <content><![CDATA[<h2 id="关于学生总成绩排名问题及Collections使用"><a href="#关于学生总成绩排名问题及Collections使用" class="headerlink" title="关于学生总成绩排名问题及Collections使用"></a>关于学生总成绩排名问题及Collections使用</h2><p>写一个项目真是存在很多的bug,修复的时间往往比开发所需要的时间更长，今天又出了一个bug,在这里记录一下，主要是针对系统中学生的成绩排名。</p>
 <h4 id="出现的问题是当管理员对成绩进行删除操作的时候排名不会变化"><a href="#出现的问题是当管理员对成绩进行删除操作的时候排名不会变化" class="headerlink" title="出现的问题是当管理员对成绩进行删除操作的时候排名不会变化"></a>出现的问题是当管理员对成绩进行删除操作的时候排名不会变化</h4><p>因为成绩是以Excel表格的形式进行导入的，在导入的同时对里面的成绩进行汇总和排序，在排序上分别对学生成绩的班级进行排名和全校名次进行排名，排名的关键点就是考试的批次，这么说可能有点笼统，下面举个栗子：</p>
 <p> <img alt="img" data-src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1571755425&di=89f9186748746fae06a09b354579d8ed&src=http://himg2.huanqiu.com/attachment2010/2017/0411/20170411011851880.jpg" class="lozad"> </p>
-<h6 id="栗子："><a href="#栗子：" class="headerlink" title="栗子："></a>栗子：</h6><p>成绩由管理员和教师进行上传，上传的同时教师选择考试批次：第一次模拟考试 ，选择班主任，选择Excel文件，然后点击导入。对于导入文件功能等过几天我在发布上来。<img alt="1571755614542" data-src="pictures%5C1571755614542.png" class="lozad"></p>
+<h6 id="栗子："><a href="#栗子：" class="headerlink" title="栗子："></a>栗子：</h6><p>成绩由管理员和教师进行上传，上传的同时教师选择考试批次：第一次模拟考试 ，选择班主任，选择Excel文件，然后点击导入。对于导入文件功能等过几天我在发布上来。<img alt="选择导入批次" data-src="/2019/10/22/%E5%85%B3%E4%BA%8E%E5%AD%A6%E7%94%9F%E6%80%BB%E6%88%90%E7%BB%A9%E6%8E%92%E5%90%8D%E9%97%AE%E9%A2%98%E5%8F%8ACollections%E4%BD%BF%E7%94%A8/%E5%85%B3%E4%BA%8E%E5%AD%A6%E7%94%9F%E6%80%BB%E6%88%90%E7%BB%A9%E6%8E%92%E5%90%8D%E9%97%AE%E9%A2%98%E5%8F%8ACollections%E4%BD%BF%E7%94%A8%5C1571755614542.png" class="lozad"></p>
 <p>在后台就是</p>
-<p><img alt="1571756051728" data-src="img/1571756051728.png" class="lozad"></p>
+<p><img alt="1571756051728" data-src="/2019/10/22/%E5%85%B3%E4%BA%8E%E5%AD%A6%E7%94%9F%E6%80%BB%E6%88%90%E7%BB%A9%E6%8E%92%E5%90%8D%E9%97%AE%E9%A2%98%E5%8F%8ACollections%E4%BD%BF%E7%94%A8/%E5%85%B3%E4%BA%8E%E5%AD%A6%E7%94%9F%E6%80%BB%E6%88%90%E7%BB%A9%E6%8E%92%E5%90%8D%E9%97%AE%E9%A2%98%E5%8F%8ACollections%E4%BD%BF%E7%94%A8%5C1571756051728.png" class="lozad"></p>
 <p>在这里可以看到考试批次的eid编号，所以在排序的时候sql语句加一个where值为eid，根据考试批次进行班级和全校的排名。</p>
 <h4 id="以区域排名为例"><a href="#以区域排名为例" class="headerlink" title="以区域排名为例"></a>以区域排名为例</h4><pre><code>Control
 //区域排名
@@ -29,14 +29,14 @@
 <p>实现这个接口的对象才具备排序的功能， 这种排序自然排序。</p>
 <p>口诀：<br>升序就是我减他，降续就是他减我</p>
 <p>想要在哪个对象中使用就要继承Comparable接口</p>
-<p><img alt="1571757435627" data-src="img%5C1571757435627.png" class="lozad"></p>
+<p><img alt="1571757435627" data-src="/2019/10/22/%E5%85%B3%E4%BA%8E%E5%AD%A6%E7%94%9F%E6%80%BB%E6%88%90%E7%BB%A9%E6%8E%92%E5%90%8D%E9%97%AE%E9%A2%98%E5%8F%8ACollections%E4%BD%BF%E7%94%A8/%E5%85%B3%E4%BA%8E%E5%AD%A6%E7%94%9F%E6%80%BB%E6%88%90%E7%BB%A9%E6%8E%92%E5%90%8D%E9%97%AE%E9%A2%98%E5%8F%8ACollections%E4%BD%BF%E7%94%A8%5C1571757435627.png" class="lozad"></p>
 <p>与此同时我们按照降序排列</p>
-<p><img alt="1571757402288" data-src="img%5C1571757402288.png" class="lozad"></p>
+<p><img alt="1571757402288" data-src="/2019/10/22/%E5%85%B3%E4%BA%8E%E5%AD%A6%E7%94%9F%E6%80%BB%E6%88%90%E7%BB%A9%E6%8E%92%E5%90%8D%E9%97%AE%E9%A2%98%E5%8F%8ACollections%E4%BD%BF%E7%94%A8/%E5%85%B3%E4%BA%8E%E5%AD%A6%E7%94%9F%E6%80%BB%E6%88%90%E7%BB%A9%E6%8E%92%E5%90%8D%E9%97%AE%E9%A2%98%E5%8F%8ACollections%E4%BD%BF%E7%94%A8%5C1571757402288.png" class="lozad"></p>
 <p>然后调用scoreService.updateRegionalranking(listAllR.get(i));这个方法，将请求送到Dao，最后修改排名。</p>
 <h3 id="效果如下"><a href="#效果如下" class="headerlink" title="效果如下"></a>效果如下</h3><p>未删除成绩前界面如下：</p>
-<p><img alt="1571757792968" data-src="img%5C1571757792968.png" class="lozad"></p>
+<p><img alt="1571757792968" data-src="/2019/10/22/%E5%85%B3%E4%BA%8E%E5%AD%A6%E7%94%9F%E6%80%BB%E6%88%90%E7%BB%A9%E6%8E%92%E5%90%8D%E9%97%AE%E9%A2%98%E5%8F%8ACollections%E4%BD%BF%E7%94%A8/%E5%85%B3%E4%BA%8E%E5%AD%A6%E7%94%9F%E6%80%BB%E6%88%90%E7%BB%A9%E6%8E%92%E5%90%8D%E9%97%AE%E9%A2%98%E5%8F%8ACollections%E4%BD%BF%E7%94%A8%5C1571757792968.png" class="lozad"></p>
 <p>点击删除乔峰，木婉清就变成了第一名，效果如下</p>
-<p><img alt="1571757871623" data-src="img%5C1571757871623.png" class="lozad"></p>
+<p><img alt="1571757871623" data-src="/2019/10/22/%E5%85%B3%E4%BA%8E%E5%AD%A6%E7%94%9F%E6%80%BB%E6%88%90%E7%BB%A9%E6%8E%92%E5%90%8D%E9%97%AE%E9%A2%98%E5%8F%8ACollections%E4%BD%BF%E7%94%A8/%E5%85%B3%E4%BA%8E%E5%AD%A6%E7%94%9F%E6%80%BB%E6%88%90%E7%BB%A9%E6%8E%92%E5%90%8D%E9%97%AE%E9%A2%98%E5%8F%8ACollections%E4%BD%BF%E7%94%A8%5C1571757871623.png" class="lozad"></p>
 <p>总之，还是很烦返修程序的，但是程序都是在不断的探索中逐步强化，自身的能力也是一样，写到这里了，睡觉去，猪儿说不能熬夜！❤</p>
 ]]></content>
       <categories>
