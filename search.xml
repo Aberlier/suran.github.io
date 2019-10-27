@@ -1,6 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>互联网大厂常考笔试题002-final的作用</title>
+    <url>/2019/10/27/%E4%BA%92%E8%81%94%E7%BD%91%E5%A4%A7%E5%8E%82%E5%B8%B8%E8%80%83%E7%AC%94%E8%AF%95%E9%A2%98002-final%E7%9A%84%E4%BD%9C%E7%94%A8/</url>
+    <content><![CDATA[<p>今天讲一下final关键字的作用，final关键字可用于三个地方，一个作用是修饰类、一个作用是修饰类属性、一个作用是修饰类方法。</p>
+<p> 被final关键字修饰的类不能被继承，被final关键字修饰的类属性和类方法不能被覆盖（重写）。</p>
+<p>   对于被final关键字修饰的类属性而言，子类就不能给他重新赋值了，如果重新赋值，会报错：</p>
+<img class="lozad" title="This is an example image" data-src="/2019/10/27/%E4%BA%92%E8%81%94%E7%BD%91%E5%A4%A7%E5%8E%82%E5%B8%B8%E8%80%83%E7%AC%94%E8%AF%95%E9%A2%98002-final%E7%9A%84%E4%BD%9C%E7%94%A8/20171011122829016.png"> 
+
+<p>下图所示，当我们直接给name赋值时，因为父类中的name属性被final修饰，所以eclipse会报错。但是这里有一个特别容易混淆的地方：</p>
+<img class="lozad" title="This is an example image" data-src="/2019/10/27/%E4%BA%92%E8%81%94%E7%BD%91%E5%A4%A7%E5%8E%82%E5%B8%B8%E8%80%83%E7%AC%94%E8%AF%95%E9%A2%98002-final%E7%9A%84%E4%BD%9C%E7%94%A8/20171011123208548.png"> 
+
+
+
+<p>请注意，我们在name之前加上了一个String关键字，其结果是从新发定义了一个变量，虽然变量名都是name，但是在内存中占用的区域却不同，所以不与之冲突，不会报错。</p>
+<p>接下来是在类方法前加上final关键字的用法。与类属性类似，父类方法如果用final关键字进行修饰，那么不能被覆盖，但要说明一点的是，不能被重写是指不能同时和和父类方法同名，同参数，换句话讲，只要子类中的方法与父类中的方法同名，同参数列表，即使返回值不同，仍然是属于重写的范畴：</p>
+<img class="lozad" title="This is an example image" data-src="/2019/10/27/%E4%BA%92%E8%81%94%E7%BD%91%E5%A4%A7%E5%8E%82%E5%B8%B8%E8%80%83%E7%AC%94%E8%AF%95%E9%A2%98002-final%E7%9A%84%E4%BD%9C%E7%94%A8/20171011125023189.png"> 
+
+<p>这里的子类方法报错，是因为他与父类中的print方法同名同参数，即使他们返回值不同，但仍然是属于重写的范畴。所以这里有一个小结论：</p>
+<p>重写：只要子类方法与父类方法同名同参数就是重写。</p>
+]]></content>
+      <categories>
+        <category>面试笔试</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>面试笔试</tag>
+        <tag>笔试final的作用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>互联网大厂常考笔试题003-overload与override的区别</title>
+    <url>/2019/10/23/%E4%BA%92%E8%81%94%E7%BD%91%E5%A4%A7%E5%8E%82%E5%B8%B8%E8%80%83%E7%AC%94%E8%AF%95%E9%A2%98004-%E7%BB%A7%E6%89%BF%E4%B8%8E%E7%BB%84%E5%90%88%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<h2 id="互联网大厂常考笔试题004-继承于组合的区别"><a href="#互联网大厂常考笔试题004-继承于组合的区别" class="headerlink" title="互联网大厂常考笔试题004-继承于组合的区别"></a>互联网大厂常考笔试题004-继承于组合的区别</h2><p> 本文链接：<a href="https://blog.csdn.net/zymx14/article/details/79605926" target="_blank" rel="noopener">https://blog.csdn.net/zymx14/article/details/79605926</a> </p>
+<h3 id="什么是继承"><a href="#什么是继承" class="headerlink" title="什么是继承"></a>什么是继承</h3><p>继承是面向对象三大基本特征之一(继承，封装，多态)，继承就是子类继承父类的特征和行为，使得子类对象（实例）具有父类的实例域和方法，或子类从父类继承方法，使得子类具有父类相同的行为。在java中通过关键字extends实现继承，java中所有类默认都是java.lang.Object的子类。继承强调的是is-a关系。<br>直接通过例子来了解继承：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//这是动物 相当于父类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">breahing</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"呼吸"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FlyingAnimals</span> <span class="title">extend</span> <span class="title">Animal</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">flying</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"飞-----"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        FlyingAnimals flyingAnimals=<span class="keyword">new</span> FlyAnimals();</span><br><span class="line">        flyingAnimals.breathing();</span><br><span class="line">        flyingAnimals.flying();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果就是</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">呼吸</span><br><span class="line">飞-----</span><br></pre></td></tr></table></figure>
+
+<p> 继承是代码复用的一种方式。在继承中，父类的方法内部实现细节对子类可见，是‘白盒式’的代码复用。 </p>
+<h3 id="什么是组合"><a href="#什么是组合" class="headerlink" title="什么是组合"></a>什么是组合</h3><p>组合是通过 对现有对象进行拼装即组合产生新的具有更复杂的功能。如： </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">breahing</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"呼吸"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 爬行动物</span></span><br><span class="line"><span class="comment"> * 组合</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Reptilia</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Animal animal;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Reptilia</span><span class="params">(Animal animal)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.animal = animal;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">crawling</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"爬行..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">breathing</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        animal.breathing();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Animal animal = <span class="keyword">new</span> Animal();</span><br><span class="line">        Reptilia reptilia = <span class="keyword">new</span> Reptilia(animal);</span><br><span class="line">        reptilia.breathing();;</span><br><span class="line">        reptilia.crawling();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p>呼吸</p>
+<p>爬行…</p>
+<p> 组合体现的是整体和部分，强调的是has-a的关系。所以组合更多的用于下面这样的场景： </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//轮胎</span><br><span class="line">class Tire&#123;</span><br><span class="line">public void run()&#123;</span><br><span class="line">	System.out.println(&quot;轮胎转动...&quot;);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line">//灯</span><br><span class="line">class Light&#123;</span><br><span class="line">public void light()&#123;</span><br><span class="line">	System.out.println(&quot;灯亮...&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Vehicle</span></span>&#123;</span><br><span class="line"> <span class="keyword">private</span> Tire tire;</span><br><span class="line"> <span class="keyword">private</span> Light light;</span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="title">Vehicle</span><span class="params">(Tire tire,Light light)</span></span>&#123;</span><br><span class="line"> <span class="keyword">this</span>.tire=tire;</span><br><span class="line"> <span class="keyword">this</span>.light=light;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">operation</span><span class="params">()</span></span>&#123;</span><br><span class="line"> light.light();</span><br><span class="line"> tire.run();</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"> Tire tire =<span class="keyword">new</span> Tire();</span><br><span class="line"> Light light=<span class="keyword">new</span> Light();</span><br><span class="line"> Vehicle vehicle=<span class="keyword">new</span> Vehicle(tire,light);</span><br><span class="line"> vehicle.operation();</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果</p>
+<p>灯亮…</p>
+<p>轮胎转动…</p>
+<h3 id="继承与组合的区别与联系"><a href="#继承与组合的区别与联系" class="headerlink" title="继承与组合的区别与联系"></a>继承与组合的区别与联系</h3><p>继承与组合都是面向对象中代码复用的方式。父类的内部细节对子类可见，其代码属于白盒式的复用，而组合中，对象之间的内部细节不可见，其代码属于黑盒式复用。继承在编码过程中就要指定具体的父类，其关系在编译期就确定，而组合的关系一般在运行时确定。继承强调的是is-a的关系，而组合强调的是has-a的关系。</p>
+<h3 id="继承与组合的优缺点"><a href="#继承与组合的优缺点" class="headerlink" title="继承与组合的优缺点"></a>继承与组合的优缺点</h3><h5 id="继承的优缺点"><a href="#继承的优缺点" class="headerlink" title="继承的优缺点"></a>继承的优缺点</h5><h6 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h6><p>支持扩展，通过继承父类实现，但会使系统结构较复杂<br>易于修改被复用的代码</p>
+<h6 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h6><p>代码白盒复用，父类的实现细节暴露给子类，破坏了封装性<br>当父类的实现代码修改时，可能使得子类也不得不修改，增加维护难度。<br>子类缺乏独立性，依赖于父类，耦合度较高<br>不支持动态拓展，在编译期就决定了父类</p>
+<h5 id="组合的优缺点"><a href="#组合的优缺点" class="headerlink" title="组合的优缺点"></a>组合的优缺点</h5><h6 id="优点：-1"><a href="#优点：-1" class="headerlink" title="优点："></a>优点：</h6><p>代码黑盒复用，被包括的对象内部实现细节对外不可见，封装性好。<br>整体类与局部类之间松耦合，相互独立。<br>支持扩展<br>每个类只专注于一项任务<br>支持动态扩展，可在运行时根据具体对象选择不同类型的组合对象(扩展性比继承好)</p>
+<h6 id="缺点：-1"><a href="#缺点：-1" class="headerlink" title="缺点："></a>缺点：</h6><p>创建整体类对象时，需要创建所有局部类对象。导致系统对象很多。<br>什么情况下使用继承，什么情况下使用组合<br>从前面的分析看，组合的优点明显多于继承，再加上java中仅支持单继承，所以：<br>除非两个类之间是is-a的关系，否则尽量使用组合。</p>
+]]></content>
+      <categories>
+        <category>面试笔试</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>面试笔试</tag>
+        <tag>继承与组合的区别</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>互联网大厂常考笔试题003-overload与override的区别</title>
+    <url>/2019/10/23/%E4%BA%92%E8%81%94%E7%BD%91%E5%A4%A7%E5%8E%82%E5%B8%B8%E8%80%83%E7%AC%94%E8%AF%95%E9%A2%98003-overload%E4%B8%8Eoverride%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<h2 id="互联网大厂常考笔试题003-overload与override的区别"><a href="#互联网大厂常考笔试题003-overload与override的区别" class="headerlink" title="互联网大厂常考笔试题003-overload与override的区别"></a>互联网大厂常考笔试题003-overload与override的区别</h2><p>本文链接：<a href="https://blog.csdn.net/scau_lth/article/details/83413082" target="_blank" rel="noopener">https://blog.csdn.net/scau_lth/article/details/83413082</a></p>
+<h6 id="Override：重写-Overload：重载"><a href="#Override：重写-Overload：重载" class="headerlink" title="Override：重写                                Overload：重载"></a>Override：重写                                Overload：重载</h6><p>这两者之间的区别在很多Java的面试笔试中都会经常被问到，下面我就捋一下他们的区别。</p>
+<p>重写(Override)也称覆盖，它是父类与子类之间多态性的一种表现，而重载(Overload)是一个类中多态性的一种表现。</p>
+<p>override从字面就可以知道，它是覆盖了一个方法并且对其重写，以求达到不同的作用。overload它是指我们可以定义一些名称相同的方法，通过定义不同的输入参数来区分这些方法，然后再调用时，虚拟机就会根据不同的参数样式，来选择合适的方法执行。</p>
+<h2 id="override（重写，覆盖）"><a href="#override（重写，覆盖）" class="headerlink" title="override（重写，覆盖）"></a>override（重写，覆盖）</h2><p>（1）方法名、参数、返回值相同。<br>（2）子类方法不能缩小父类方法的访问权限。<br>（3）子类方法不能抛出比父类方法更多的异常(但子类方法可以不抛出异常)。<br>（4）存在于父类和子类之间。<br>（5）方法被定义为final不能被重写。<br>（6）被覆盖的方法不能为private，否则在其子类中只是新定义了一个方法，并没有对其进行覆盖。</p>
+<h2 id="overload（重载，过载）"><a href="#overload（重载，过载）" class="headerlink" title="overload（重载，过载）"></a>overload（重载，过载）</h2><p>（1）参数类型、个数、顺序至少有一个不相同。<br>（2）不能重载只有返回值不同的方法名。<br>（3）针对于一个类而言。<br>（4）不能通过访问权限、返回类型、抛出的异常进行重载；<br>（5）方法的异常类型和数目不会对重载造成影响。</p>
+<h2 id="override应用"><a href="#override应用" class="headerlink" title="override应用"></a>override应用</h2><p>（1）最熟悉的覆盖就是对接口方法的实现，在接口中一般只是对方法进行了声明，而我们在实现时，就需要实现接口声明的所有方法。<br>（2）除了这个典型的用法以外，我们在继承中也可能会在子类覆盖父类中的方法。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>override是在不同类之间的行为，overload是在同一个类中的行为。</p>
+<p>overload的方法可以改变返回值的类型，因为它与返回值类型无关。</p>
+]]></content>
+      <categories>
+        <category>面试笔试</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>面试笔试</tag>
+        <tag>overload与override的区别</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>关于学生总成绩排名问题及Collections使用</title>
     <url>/2019/10/22/%E5%85%B3%E4%BA%8E%E5%AD%A6%E7%94%9F%E6%80%BB%E6%88%90%E7%BB%A9%E6%8E%92%E5%90%8D%E9%97%AE%E9%A2%98%E5%8F%8ACollections%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<h2 id="关于学生总成绩排名问题及Collections使用"><a href="#关于学生总成绩排名问题及Collections使用" class="headerlink" title="关于学生总成绩排名问题及Collections使用"></a>关于学生总成绩排名问题及Collections使用</h2><p>写一个项目真是存在很多的bug,修复的时间往往比开发所需要的时间更长，今天又出了一个bug,在这里记录一下，主要是针对系统中学生的成绩排名。</p>
@@ -84,7 +179,6 @@
 <p>3、非静态方法里面能不能引用静态资源？可以，非静态方法就是实例方法，那是new之后才产生的，那么属于类的内容它都认识。</p>
 ]]></content>
       <categories>
-        <category>Java</category>
         <category>面试笔试</category>
       </categories>
       <tags>
