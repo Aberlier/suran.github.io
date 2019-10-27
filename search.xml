@@ -14,28 +14,6 @@
       </tags>
   </entry>
   <entry>
-    <title>互联网大厂常考笔试题003-overload与override的区别</title>
-    <url>/2019/10/23/%E4%BA%92%E8%81%94%E7%BD%91%E5%A4%A7%E5%8E%82%E5%B8%B8%E8%80%83%E7%AC%94%E8%AF%95%E9%A2%98003-overload%E4%B8%8Eoverride%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
-    <content><![CDATA[<h2 id="互联网大厂常考笔试题003-overload与override的区别"><a href="#互联网大厂常考笔试题003-overload与override的区别" class="headerlink" title="互联网大厂常考笔试题003-overload与override的区别"></a>互联网大厂常考笔试题003-overload与override的区别</h2><p>本文链接：<a href="https://blog.csdn.net/scau_lth/article/details/83413082" target="_blank" rel="noopener">https://blog.csdn.net/scau_lth/article/details/83413082</a></p>
-<h6 id="Override：重写-Overload：重载"><a href="#Override：重写-Overload：重载" class="headerlink" title="Override：重写                                Overload：重载"></a>Override：重写                                Overload：重载</h6><p>这两者之间的区别在很多Java的面试笔试中都会经常被问到，下面我就捋一下他们的区别。</p>
-<p>重写(Override)也称覆盖，它是父类与子类之间多态性的一种表现，而重载(Overload)是一个类中多态性的一种表现。</p>
-<p>override从字面就可以知道，它是覆盖了一个方法并且对其重写，以求达到不同的作用。overload它是指我们可以定义一些名称相同的方法，通过定义不同的输入参数来区分这些方法，然后再调用时，虚拟机就会根据不同的参数样式，来选择合适的方法执行。</p>
-<h2 id="override（重写，覆盖）"><a href="#override（重写，覆盖）" class="headerlink" title="override（重写，覆盖）"></a>override（重写，覆盖）</h2><p>（1）方法名、参数、返回值相同。<br>（2）子类方法不能缩小父类方法的访问权限。<br>（3）子类方法不能抛出比父类方法更多的异常(但子类方法可以不抛出异常)。<br>（4）存在于父类和子类之间。<br>（5）方法被定义为final不能被重写。<br>（6）被覆盖的方法不能为private，否则在其子类中只是新定义了一个方法，并没有对其进行覆盖。</p>
-<h2 id="overload（重载，过载）"><a href="#overload（重载，过载）" class="headerlink" title="overload（重载，过载）"></a>overload（重载，过载）</h2><p>（1）参数类型、个数、顺序至少有一个不相同。<br>（2）不能重载只有返回值不同的方法名。<br>（3）针对于一个类而言。<br>（4）不能通过访问权限、返回类型、抛出的异常进行重载；<br>（5）方法的异常类型和数目不会对重载造成影响。</p>
-<h2 id="override应用"><a href="#override应用" class="headerlink" title="override应用"></a>override应用</h2><p>（1）最熟悉的覆盖就是对接口方法的实现，在接口中一般只是对方法进行了声明，而我们在实现时，就需要实现接口声明的所有方法。<br>（2）除了这个典型的用法以外，我们在继承中也可能会在子类覆盖父类中的方法。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>override是在不同类之间的行为，overload是在同一个类中的行为。</p>
-<p>overload的方法可以改变返回值的类型，因为它与返回值类型无关。</p>
-]]></content>
-      <categories>
-        <category>面试笔试</category>
-      </categories>
-      <tags>
-        <tag>面试笔试</tag>
-        <tag>java</tag>
-        <tag>overload与override的区别</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>互联网大厂常考笔试题004-继承于组合的区别</title>
     <url>/2019/10/23/%E4%BA%92%E8%81%94%E7%BD%91%E5%A4%A7%E5%8E%82%E5%B8%B8%E8%80%83%E7%AC%94%E8%AF%95%E9%A2%98004-%E7%BB%A7%E6%89%BF%E4%B8%8E%E7%BB%84%E5%90%88%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
     <content><![CDATA[<h2 id="互联网大厂常考笔试题004-继承于组合的区别"><a href="#互联网大厂常考笔试题004-继承于组合的区别" class="headerlink" title="互联网大厂常考笔试题004-继承于组合的区别"></a>互联网大厂常考笔试题004-继承于组合的区别</h2><p> 本文链接：<a href="https://blog.csdn.net/zymx14/article/details/79605926" target="_blank" rel="noopener">https://blog.csdn.net/zymx14/article/details/79605926</a> </p>
@@ -133,6 +111,28 @@
         <tag>排名</tag>
         <tag>Collections</tag>
         <tag>猪儿</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>互联网大厂常考笔试题003-overload与override的区别</title>
+    <url>/2019/10/22/%E4%BA%92%E8%81%94%E7%BD%91%E5%A4%A7%E5%8E%82%E5%B8%B8%E8%80%83%E7%AC%94%E8%AF%95%E9%A2%98003-overload%E4%B8%8Eoverride%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<h2 id="互联网大厂常考笔试题003-overload与override的区别"><a href="#互联网大厂常考笔试题003-overload与override的区别" class="headerlink" title="互联网大厂常考笔试题003-overload与override的区别"></a>互联网大厂常考笔试题003-overload与override的区别</h2><p>本文链接：<a href="https://blog.csdn.net/scau_lth/article/details/83413082" target="_blank" rel="noopener">https://blog.csdn.net/scau_lth/article/details/83413082</a></p>
+<h6 id="Override：重写-Overload：重载"><a href="#Override：重写-Overload：重载" class="headerlink" title="Override：重写                                Overload：重载"></a>Override：重写                                Overload：重载</h6><p>这两者之间的区别在很多Java的面试笔试中都会经常被问到，下面我就捋一下他们的区别。</p>
+<p>重写(Override)也称覆盖，它是父类与子类之间多态性的一种表现，而重载(Overload)是一个类中多态性的一种表现。</p>
+<p>override从字面就可以知道，它是覆盖了一个方法并且对其重写，以求达到不同的作用。overload它是指我们可以定义一些名称相同的方法，通过定义不同的输入参数来区分这些方法，然后再调用时，虚拟机就会根据不同的参数样式，来选择合适的方法执行。</p>
+<h2 id="override（重写，覆盖）"><a href="#override（重写，覆盖）" class="headerlink" title="override（重写，覆盖）"></a>override（重写，覆盖）</h2><p>（1）方法名、参数、返回值相同。<br>（2）子类方法不能缩小父类方法的访问权限。<br>（3）子类方法不能抛出比父类方法更多的异常(但子类方法可以不抛出异常)。<br>（4）存在于父类和子类之间。<br>（5）方法被定义为final不能被重写。<br>（6）被覆盖的方法不能为private，否则在其子类中只是新定义了一个方法，并没有对其进行覆盖。</p>
+<h2 id="overload（重载，过载）"><a href="#overload（重载，过载）" class="headerlink" title="overload（重载，过载）"></a>overload（重载，过载）</h2><p>（1）参数类型、个数、顺序至少有一个不相同。<br>（2）不能重载只有返回值不同的方法名。<br>（3）针对于一个类而言。<br>（4）不能通过访问权限、返回类型、抛出的异常进行重载；<br>（5）方法的异常类型和数目不会对重载造成影响。</p>
+<h2 id="override应用"><a href="#override应用" class="headerlink" title="override应用"></a>override应用</h2><p>（1）最熟悉的覆盖就是对接口方法的实现，在接口中一般只是对方法进行了声明，而我们在实现时，就需要实现接口声明的所有方法。<br>（2）除了这个典型的用法以外，我们在继承中也可能会在子类覆盖父类中的方法。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>override是在不同类之间的行为，overload是在同一个类中的行为。</p>
+<p>overload的方法可以改变返回值的类型，因为它与返回值类型无关。</p>
+]]></content>
+      <categories>
+        <category>面试笔试</category>
+      </categories>
+      <tags>
+        <tag>面试笔试</tag>
+        <tag>java</tag>
+        <tag>overload与override的区别</tag>
       </tags>
   </entry>
   <entry>
