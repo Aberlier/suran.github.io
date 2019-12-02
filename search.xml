@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>SpringBoot整合MyBatis</title>
+    <url>/2019/11/22/SpringBoot%E6%95%B4%E5%90%88mybatis/</url>
+    <content><![CDATA[<h2 id="SpringBoot整合MyBatis"><a href="#SpringBoot整合MyBatis" class="headerlink" title="SpringBoot整合MyBatis"></a>SpringBoot整合MyBatis</h2><p>今天写spring boot 整合mybatis的时候遇到 </p>
+<h4 id="org-apache-ibatis-binding-BindingException-Invalid-bound-statement-not-found"><a href="#org-apache-ibatis-binding-BindingException-Invalid-bound-statement-not-found" class="headerlink" title="org.apache.ibatis.binding.BindingException: Invalid bound statement (not found)"></a>org.apache.ibatis.binding.BindingException: Invalid bound statement (not found)</h4><p>这个错，找了很久，总结原因是因为扫描不到xxxMapper.xml。</p>
+<p>受到以前整个springMvc整合mybatis的影响，将文件放在了src/main/java下，导致一直扫描不到xxxMapper.xml文件。原因是：idea中maven打包的时候不会将xxxMapper.xml，所以target打包之后不会有xxxMapper.xml文件，所以一直扫描不到。</p>
+<h3 id="目录结构："><a href="#目录结构：" class="headerlink" title="目录结构："></a>目录结构：</h3><h3 id="解决办法：将xxxMapper-xml文件放在了src-main-resources下，然后在application-properties文件中添加配置"><a href="#解决办法：将xxxMapper-xml文件放在了src-main-resources下，然后在application-properties文件中添加配置" class="headerlink" title="解决办法：将xxxMapper.xml文件放在了src/main/resources下，然后在application.properties文件中添加配置"></a>解决办法：将xxxMapper.xml文件放在了src/main/resources下，然后在application.properties文件中添加配置</h3><p> mybatis.mapper-locations=classpath:mappings/*.xml</p>
+<h3 id="或者在application-yml文件中加入配置："><a href="#或者在application-yml文件中加入配置：" class="headerlink" title="或者在application.yml文件中加入配置："></a>或者在application.yml文件中加入配置：</h3><p> mybatis:<br>      mapper-locations: classpath:mappings/*.xml</p>
+<p>还有一种办法是：</p>
+<p>使用@Select、@Insert、@Update、@Delete注解代替xxxMapper.xml里面的内容，这样就不存在扫描xxxMapper.xml文件的问题了。<br>1<br>遇到org.apache.ibatis.binding.BindingException: Invalid bound statement(not found)这个问题可能还有其他原因，不过这些原因很容易排查。</p>
+<p>xxxMapper.xml文件中的namespace对应有误<br>xxxMapper.java文件中没有对应的xxxMapper.xml中的方法。<br>记录一下，防止以后自己再采坑。：）<br>————————————————<br>版权声明：本文为CSDN博主「innerpeacez」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/zhwyj1019/article/details/79088073" target="_blank" rel="noopener">https://blog.csdn.net/zhwyj1019/article/details/79088073</a></p>
+]]></content>
+      <categories>
+        <category>Spring</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>SpringBoot</tag>
+        <tag>MyBatis</tag>
+        <tag>Mapper</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>学长给你们的大学指南</title>
     <url>/2019/10/27/%E9%80%81%E7%BB%99%E5%A4%A7%E4%B8%80%E7%9A%84%E4%BD%A0%E4%BB%AC/</url>
     <content><![CDATA[<h2 id="开启美好的大学生活"><a href="#开启美好的大学生活" class="headerlink" title="开启美好的大学生活"></a>开启美好的大学生活</h2><h3 id="啰嗦前言"><a href="#啰嗦前言" class="headerlink" title="啰嗦前言"></a>啰嗦前言</h3><p>很荣幸受邀来参加咱系的新老生交流会，其实我挺愿意参加这种会的，并不是为了展示啥我有多厉害，多牛，而是在这个会中能够让学弟学妹们感受一下咱系的优秀种子选手们都是啥样的，感受一下学长学姐们的大学，树立一个正确的前进方向，看看学姐们都是怎么过来的，对比一下自己。学弟们不要被网游啥的所耽误，学妹们应该还好些，但是从我们专业的女生来看，大多数都知道努力，但是什么都很认真，学妹们，说真的，该认真认真，不该认真就差不多就行，把更多精力放在你想走的那条路上，或者你觉得你有比这更重要，更有意义的事。比如上心理健康教育课，思修课，你觉得除了听应该还可以干点别的，把英语、高数作业写了，学弟们研究一下C语言编程题，到时候你就会发现，这些课能干很多东西，哈哈哈，其实我就是一直这么干的，我觉得这样挺好的，起码别人写作业，我就完成了。这就是一个可以利用时间的小方法，我希望通过这次的交流会让大家能够树立起一个正确的前进方向，能够拥有一个充实的大学生活，我想哪怕有一个人听我叨叨半天，能够真正的收到了启发，找到了自己前行的路，那都是影响一生的事情，何乐而不为呢？我短短十五分钟的讲解，在台上我可能讲的不太全面，在这上面我就详细的给大家做一个总结，希望你们能够看完！</p>
