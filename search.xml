@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>解决SSM项目打包没有.xml文件的问题</title>
+    <url>/2019/12/09/%E8%A7%A3%E5%86%B3SSM%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E6%B2%A1%E6%9C%89-xml%E6%96%87%E4%BB%B6%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h2 id="解决SSM项目打包没有-xml文件的问题"><a href="#解决SSM项目打包没有-xml文件的问题" class="headerlink" title="解决SSM项目打包没有.xml文件的问题"></a>解决SSM项目打包没有.xml文件的问题</h2><p>IDEA的maven项目中，默认源代码目录下（src/main/java目录）的xml等资源文件并不会在编译的时候一块打包进classes文件夹，而是直接舍弃掉。如果使用的是Eclipse，Eclipse的src目录下的xml等资源文件在编译的时候会自动打包进输出到classes文件夹。</p>
+<p>示例：</p>
+<p>当在IDEA中使用MyBatis时，一般会创建一个SQL映射的配置文件，这个文件如果是在src/main/java目录下，编译后在target目录下是找不到这个文件的</p>
+<img class="lozad" data-src="/2019/12/09/%E8%A7%A3%E5%86%B3SSM%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E6%B2%A1%E6%9C%89-xml%E6%96%87%E4%BB%B6%E7%9A%84%E9%97%AE%E9%A2%98/001.png"> 
+
+<p>对于IDEA的这个问题，有如下的解决办法：</p>
+<p><strong>第一种方法：如果没有特殊业务，不需要指定资源文件定位到src/main/java下，则可以在src下创建main/resources目录，并将所需要的xml资源文件放置其中即可。maven工具默认在编译的时候，会将resources文件夹中的资源文件一块打包进classes目录中。</strong></p>
+<img class="lozad" data-src="/2019/12/09/%E8%A7%A3%E5%86%B3SSM%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E6%B2%A1%E6%9C%89-xml%E6%96%87%E4%BB%B6%E7%9A%84%E9%97%AE%E9%A2%98/002.png"> 
+
+<p> 对于MyBatis的这种使用方式，我们必须在配置文件中指定mapper.xml文件的位置，例如在springboot项目中，在application.properties中增加： </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mybatis.mapper-locations=classpath:mapper/*.xml</span><br></pre></td></tr></table></figure>
+
+<p> 如果是普通的ssm项目，则这样配置： </p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"sqlSessionFactoryBean"</span> <span class="attr">class</span>=<span class="string">"org.mybatis.spring.SqlSessionFactoryBean"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"druidDataSource"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"configLocation"</span> <span class="attr">value</span>=<span class="string">"classpath:mybatis-config.xml"</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 配置mapper文件的位置 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"mapperLocations"</span> <span class="attr">value</span>=<span class="string">"classpath:mapper/*.xml"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p> <strong>第二种方法：配置maven的pom文件配置，在pom文件中找到节点，添加下列代码：</strong> </p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">&lt;build&gt;  </span><br><span class="line">  &lt;configreation&gt;</span><br><span class="line">    &lt;resources&gt;  </span><br><span class="line">    &lt;!-- mapper.xml文件在java目录下 --&gt;</span><br><span class="line">    &lt;resource&gt;  </span><br><span class="line">      &lt;directory&gt;src/main/java&lt;<span class="regexp">/directory&gt;  </span></span><br><span class="line"><span class="regexp">        &lt;includes&gt;  </span></span><br><span class="line"><span class="regexp">          &lt;include&gt;**/</span>*.xml&lt;<span class="regexp">/include&gt;  </span></span><br><span class="line"><span class="regexp">        &lt;/i</span>ncludes&gt;  </span><br><span class="line">    &lt;<span class="regexp">/resource&gt;  </span></span><br><span class="line"><span class="regexp">    &lt;!-- mapper.xml文件在resources目录下--&gt;</span></span><br><span class="line"><span class="regexp">    &lt;!--&lt;resource&gt;</span></span><br><span class="line"><span class="regexp">        &lt;directory&gt;src/m</span>ain/resources&lt;<span class="regexp">/directory&gt; </span></span><br><span class="line"><span class="regexp">    &lt;/</span>resource&gt;--&gt;</span><br><span class="line">  &lt;<span class="regexp">/resources&gt;</span></span><br><span class="line"><span class="regexp"> &lt;/</span>configreation&gt;</span><br><span class="line">&lt;<span class="regexp">/build&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>同时在编译的时候一定要注意，可以采用在IDEA中快速找到项目的路径，在路径中按SHIFT+右击，在此处打开命令行，输入<strong>mvn clean install</strong> 命令，进行清理并重新编译，看taglib中是否存在.xml文件</p>
+<img class="lozad" data-src="/2019/12/09/%E8%A7%A3%E5%86%B3SSM%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E6%B2%A1%E6%9C%89-xml%E6%96%87%E4%BB%B6%E7%9A%84%E9%97%AE%E9%A2%98/003.png"> 
+
+]]></content>
+      <categories>
+        <category>Spring</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>SSM</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>安装Oracle数据库并创建账户</title>
     <url>/2019/12/05/%E5%AE%89%E8%A3%85Oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B9%B6%E5%88%9B%E5%BB%BA%E8%B4%A6%E6%88%B7/</url>
     <content><![CDATA[<p>大家可以根据自己的操作系统是多少位（32位或64位）的，到官网下载相应的安装程序，如下图所示。有一点需要注意，Oracle的安装程序分成2个文件，下载后将2个文件解压到同一目录即可。其实用一个也可以，今天刘姐给了我一个压缩包，就一个文件  <strong>orcale11g  win64_11gR2_database</strong> 也可以进行数据库的安装，文件链接地址如下：</p>
